@@ -1,7 +1,58 @@
 body{
-    background-color: #d789d7;
+    background-color: #f7dad9;
 
 }
 table{
     color: black;
+}
+.grid-container {
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-columns: auto ;
+  padding: 0px 1000px 50px 0px;
+  grid: column;
+}
+
+.grid-item {
+ 
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 25px;
+  font-size: 30px;
+  text-align: Left;
+}
+.btn{
+    background-color: linear-gradient(#);
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+#form {
+  max-width: 700px;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.form-field {
+  display: flex;
+  margin: 0 0 1rem 0;
+}
+label, input {
+  width: 70%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+label {
+  text-align: right;
+  width: 30%;
+}
+input {
+  border: 2px solid #aaa;
+  border-radius: 2px;
 }
