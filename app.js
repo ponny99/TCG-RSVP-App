@@ -1,30 +1,69 @@
-(function (){
-  'use strict';
- 
-  var btnSetItem = document.querySelector('.btnSetItem')
- 
-  function setLocalStorage(){
-     btnSetItem.addEventListener('click', () => {
-      localStorage.setItem('name','ponny')
-    })
+
+function save() {
+  var info = {}; 
+
+  
+  info.fname = document.getElementById("fname").value;
+  info.lname = document.getElementById("lname").value;
+  info.address = document.getElementById("address").value;
+  info.phone = document.getElementById("phone").value;
+
+  if (
+    info.fname === "" ||
+    info.lname === "" ||
+    info.address === "" ||
+    info.phone === ""
+  ) {
+    alert("Fields must be fill out first");
+    return;
   }
-  setLocalStorage()
+
  
-}());
+  console.log(info);
 
+  
+  var fname = document.getElementById("fname").value;
+  var lname = document.getElementById("lname").value;
+  var address = document.getElementById("address").value;
+  var phone = document.getElementById("phone").value;
 
-function getLocalStorage() {
-  btnGetItem.addEventListener('click', () => {
-      console.log(localStorage.getItem('name'))
-    })
+  
+  localStorage.setItem("First Name", fname);
+  localStorage.setItem("Last Name", lname);
+  localStorage.setItem("Address", address);
+  localStorage.setItem("Phone Number", phone);
+
+  
+  localStorage.setItem("Info", JSON.stringify(info));
 }
 
-function removeLocalStorage() {
-  btnRemoveItem.addEventListener('click', () => {
-      localStorage.removeItem('name')
-    })
+
+function deleteElement() {
+  localStorage.removeItem("First Name");
+  localStorage.removeItem("Last Name");
+  localStorage.removeItem("Address");
+  localStorage.removeItem("Phone Number");
+  localStorage.removeItem("Info");
+  readAll();
 }
 
-btnSetItem.addEventListener('click', () => {
-      localStorage.setItem('name','ponny')
-    })
+
+function readAll() {
+  
+  var formLocalStorage = JSON.parse(localStorage.getItem("Info"));
+
+  if (formLocalStorage === null) {
+   
+    document.getElementById("display-data").innerHTML =
+      "Sorry, no data to show";
+  } else {
+    document.getElementById(
+      "display-data"
+    ).innerHTML = `<h4>User Information:</h4>
+                 First Name: ${formLocalStorage.fname}<br> 
+                 Last Name: ${formLocalStorage.lname}<br>
+                 Address: ${formLocalStorage.address}<br>
+                 Phone Number: ${formLocalStorage.phone}`;
+  }
+  document.getElementById("display-data").removeAttribute("hidden");
+}
